@@ -6,8 +6,10 @@ import Tilt from 'react-parallax-tilt';
 
 
 const ProductsList = () => {
+  //state is something that changes 
     const [shoes, setShoes] = useState([]);
-
+  //take a arrow anything you want to happen once goes inside a useeffect
+  //runs when the componetes is mounted
     useEffect(() => {
       const fetchShoe = () => {
         const options = {
@@ -22,12 +24,14 @@ const ProductsList = () => {
           axios.request(options).then(function (response) {
             const shoeRepo = response.data;
             console.log(shoeRepo)
+            //adjust value of the state
             setShoes(shoeRepo)
         }).catch(function (error) {
             console.error(error);
         });
       }
     fetchShoe()
+    //the array here is the dependance array watch for changes here []
     }, []);
 
     return (
@@ -39,6 +43,9 @@ const ProductsList = () => {
                 <Thumbnail  src={items.media.thumbUrl}></Thumbnail>
                 <ShoeInfo>{items.title}</ShoeInfo>
                 <ShoeInfo>{items.colorway}</ShoeInfo>
+                <select>
+                  <option disabled selected>Pick a size</option>
+                </select>
                 <button>Add To Cart</button>
               </Border>
               </Tilt>

@@ -10,7 +10,7 @@ const ScrollBar = ({slide}) => {
 
     useEffect(() => setTimeout(() =>{
         setCurrent(current === length - 1 ? 0 : current + 1)
-    },3000), []);
+    },5000), []);
 
     
     
